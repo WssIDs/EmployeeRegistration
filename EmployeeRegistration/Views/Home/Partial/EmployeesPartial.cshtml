@@ -1,0 +1,54 @@
+﻿@model IEnumerable<EmployeeRegistration.BusinessLayer.Models.EmployeeViewModel>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmploymentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Company.CompanyName)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmploymentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company.CompanyName)
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<EmployeeRegistration.BusinessLayer.Models.CompanyViewModel>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanySize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LegalForm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivityType)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CompanyId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CompanyName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CompanySize)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LegalForm)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ActivityType)
+    </td>
+</tr>
+}
+
+</table>

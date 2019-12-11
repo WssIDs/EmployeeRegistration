@@ -1,0 +1,64 @@
+﻿@model EmployeeRegistration.BusinessLayer.Models.CompanyViewModel
+
+@{
+    ViewBag.Title = "Удаление компании";
+}
+
+<hr />
+<h3>Удаление компании</h3>
+<h5>Вы действительно хотите удалить компанию?</h5>
+<p class="text-danger">При удалении компании удаляются все сотрудники это компании</p>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyId)
+        </dt>
+       <dd>
+            @Html.DisplayFor(model => model.CompanyId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanySize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanySize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LegalForm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LegalForm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivityType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivityType)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="col-md-offset-2 form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-danger" />
+            @Html.ActionLink("Отмена", "Index",null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

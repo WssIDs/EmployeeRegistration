@@ -1,0 +1,80 @@
+﻿@model EmployeeRegistration.BusinessLayer.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "Удаление работника";
+}
+
+    <hr />
+<h3>Удаление работника</h3>
+<h5>Вы действительно хотите удалить этого работника?</h5>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmploymentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmploymentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.CompanyName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+
+        <div class="col-md-offset-2 form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-danger" />
+            @Html.ActionLink("Отмена", "Index",null, new { @class ="btn btn-default"})
+        </div>
+    }
+</div>

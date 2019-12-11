@@ -1,0 +1,84 @@
+﻿@model IEnumerable<EmployeeRegistration.BusinessLayer.Models.CompanyViewModel>
+
+@{
+    ViewBag.Title = "Список компаний";
+}
+
+<hr />
+<h4>Список компаний</h4>
+<p>
+    <div class="form-group">
+        <div class="input-group">
+            @Html.ActionLink("Добавить компанию", "Create", null, new { @class = "btn btn-success input-group-addon" })
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input type="text" id="Search" placeholder="Поиск" class="form-control" />
+
+        </div>
+    </div>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanySize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LegalForm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivityType)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="Search">
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanySize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LegalForm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActivityType)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.CompanyId }, new { @class = "btn btn-sm btn-default" })
+                @Html.ActionLink("Удалить", "Delete", new { id = item.CompanyId }, new { @class = "btn btn-sm btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLocaleLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLocaleLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            })
+        })
+    })
+</script>

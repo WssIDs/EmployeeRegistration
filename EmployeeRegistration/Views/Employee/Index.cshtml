@@ -1,0 +1,98 @@
+﻿@model IEnumerable<EmployeeRegistration.BusinessLayer.Models.EmployeeViewModel>
+
+@{
+    ViewBag.Title = "Список работников";
+}
+
+<hr />
+<h4>Список работников</h4>
+
+<p>
+    <div class="form-group">
+        <div class="input-group">
+            @Html.ActionLink("Добавить работника", "Create", null, new { @class = "btn btn-success input-group-addon" })
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input type="text" id="Search" placeholder="Поиск" class="form-control" />
+
+        </div>
+    </div>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmploymentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Company)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="Search">
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmploymentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Company.CompanyName)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.EmployeeId }, new { @class = "btn btn-sm btn-default" })
+                @Html.ActionLink("Удалить", "Delete", new { id = item.EmployeeId }, new { @class = "btn btn-sm btn-danger" })
+            </td>
+        </tr>
+    }
+</table>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLocaleLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLocaleLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            })
+        })
+    })
+</script>
+
